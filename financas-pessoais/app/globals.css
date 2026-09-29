@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07090c;
+  --foreground: #e4e4e7;
+  /* Deixa controles nativos (calendário do input de data, scrollbar) no tema escuro. */
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Superfície padrão dos cards. */
+@utility panel {
+  border-radius: 1rem;
+  background-color: rgb(255 255 255 / 0.03);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+
+body {
+  background:
+    radial-gradient(60rem 28rem at 50% -8rem, rgb(16 185 129 / 0.14), transparent 70%) no-repeat,
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
