@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Paleta: neutros quentes; cor só nos valores (receita/despesa). */
 :root {
   --paper: #f6f5f1;
   --surface: #ffffff;

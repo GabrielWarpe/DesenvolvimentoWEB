@@ -43,3 +43,6 @@ next-env.d.ts
 
 # banco local de desenvolvimento
 /.pgdata
+
+AGENTS.md
+CLAUDE.md

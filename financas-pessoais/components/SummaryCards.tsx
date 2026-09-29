@@ -39,8 +39,6 @@ function Stat({ label, value, dot, color }: { label: string; value: number; dot:
   );
 }
 
-// A barra inteira representa as receitas: a parte vermelha é o que já foi gasto
-// e a verde é o que sobrou.
 function SpendingBar({ income, expense }: { income: number; expense: number }) {
   if (income === 0 && expense === 0) return null;
 

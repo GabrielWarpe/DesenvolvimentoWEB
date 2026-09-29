@@ -1,6 +1,5 @@
 export type TransactionType = "income" | "expense";
 
-// Valor do parâmetro ?tipo= na URL do histórico.
 export type HistoryFilter = "receitas" | "despesas";
 
 export type Transaction = {
@@ -8,7 +7,7 @@ export type Transaction = {
   description: string;
   amount: number;
   type: TransactionType;
-  occurredOn: string; // YYYY-MM-DD
+  occurredOn: string;
 };
 
 export type Summary = {

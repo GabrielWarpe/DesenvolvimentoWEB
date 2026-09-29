@@ -10,7 +10,6 @@ export const transactionSchema = z.object({
     .string()
     .trim()
     .min(1, "Informe um valor.")
-    // Aceita "1.234,56", "1234,56", "1.000" (mil) e "1234.56"
     .transform((v) =>
       Number(
         v.includes(",") || /^\d{1,3}(\.\d{3})+$/.test(v)

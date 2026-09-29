@@ -13,7 +13,6 @@ export function TransactionForm({ today }: { today: string }) {
 
   return (
     <form
-      // Remonta o formulário a cada envio: limpa após sucesso e preserva o que foi digitado após erro.
       key={state.submissionId}
       action={formAction}
       className="space-y-4 rounded-lg border border-line bg-surface p-5 lg:sticky lg:top-6"

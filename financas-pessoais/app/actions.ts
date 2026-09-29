@@ -12,7 +12,6 @@ export type FormState = {
   message?: string;
   errors?: Partial<Record<Field, string[]>>;
   values?: Partial<Record<Field, string>>;
-  // Muda a cada envio para o formulário ser remontado com os valores certos.
   submissionId: number;
 };
 

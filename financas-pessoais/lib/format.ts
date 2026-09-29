@@ -12,12 +12,10 @@ const dayMonthYear = new Intl.DateTimeFormat("pt-BR", {
   timeZone: "UTC",
 });
 
-// Datas "YYYY-MM-DD" são lidas em UTC para não "voltar um dia" por fuso horário.
 function parseIsoDate(isoDate: string) {
   return new Date(`${isoDate}T00:00:00Z`);
 }
 
-// Título de cada dia no histórico: "Hoje", "Ontem", "27 de setembro" ou "3 de maio de 2025".
 export function formatDayHeading(isoDate: string, today: string) {
   const yesterday = parseIsoDate(today);
   yesterday.setUTCDate(yesterday.getUTCDate() - 1);
@@ -29,7 +27,6 @@ export function formatDayHeading(isoDate: string, today: string) {
   return (sameYear ? dayMonth : dayMonthYear).format(parseIsoDate(isoDate));
 }
 
-// O servidor (Vercel) roda em UTC; o horário exibido é sempre o de Brasília.
 export const TIME_ZONE = "America/Sao_Paulo";
 
 const longDate = new Intl.DateTimeFormat("pt-BR", {
@@ -39,7 +36,6 @@ const longDate = new Intl.DateTimeFormat("pt-BR", {
   timeZone: TIME_ZONE,
 });
 
-// Ex.: "terça-feira, 29 de setembro"
 export function formatLongDate(date: Date) {
   return longDate.format(date);
 }

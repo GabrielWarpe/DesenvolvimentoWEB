@@ -20,11 +20,8 @@ function parseFilter(value: string | string[] | undefined): HistoryFilter | unde
 }
 
 export default async function Home({ searchParams }: PageProps<"/">) {
-  // Os dados vêm do banco a cada requisição (renderização dinâmica).
   await connection();
 
-  // O filtro do histórico fica na URL (?tipo=receitas), então a página continua
-  // sendo um Server Component: o banco já devolve a lista filtrada.
   const filter = parseFilter((await searchParams).tipo);
 
   const [summary, transactions] = await Promise.all([

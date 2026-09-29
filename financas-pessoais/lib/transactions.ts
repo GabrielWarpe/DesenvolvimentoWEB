@@ -2,7 +2,6 @@ import "server-only";
 import { db } from "./db";
 import type { Summary, Transaction, TransactionType } from "./types";
 
-// Sem `type`, retorna todas; com `type`, só receitas ou só despesas.
 export async function getTransactions(type?: TransactionType): Promise<Transaction[]> {
   const sql = db();
   const rows = await sql<

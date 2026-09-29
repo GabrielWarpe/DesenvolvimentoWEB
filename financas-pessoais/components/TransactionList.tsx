@@ -15,7 +15,6 @@ const EMPTY_MESSAGES: Record<HistoryFilter | "todas", string> = {
   despesas: "Nenhuma despesa registrada.",
 };
 
-// A lista já vem do banco em ordem cronológica; aqui só separamos por dia.
 function groupByDay(transactions: Transaction[]) {
   const groups = new Map<string, Transaction[]>();
   for (const t of transactions) {
@@ -38,7 +37,6 @@ export function TransactionList({
       <div className="flex items-end justify-between gap-4 border-b border-line px-5 pt-4">
         <h2 className="pb-3 font-semibold">Histórico</h2>
 
-        {/* Links comuns: trocar o filtro muda a URL e o servidor devolve a lista filtrada. */}
         <nav aria-label="Filtrar histórico" className="flex gap-5 text-sm">
           {TABS.map((tab) => {
             const active = tab.value === filter;
