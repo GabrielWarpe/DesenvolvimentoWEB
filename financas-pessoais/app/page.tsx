@@ -1,5 +1,4 @@
 import { connection } from "next/server";
-import { Wallet } from "lucide-react";
 import { SummaryCards } from "@/components/SummaryCards";
 import { TransactionForm } from "@/components/TransactionForm";
 import { TransactionList } from "@/components/TransactionList";
@@ -37,31 +36,24 @@ export default async function Home({ searchParams }: PageProps<"/">) {
   const today = now.toLocaleDateString("en-CA", { timeZone: TIME_ZONE });
 
   return (
-    <main className="mx-auto w-full max-w-6xl space-y-6 px-4 py-8 sm:px-6 sm:py-12">
-      <header className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="text-sm font-medium text-zinc-400 first-letter:uppercase">
-            {formatLongDate(now)}
-          </p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {greeting(now)}, {OWNER} 👋
-          </h1>
-        </div>
-        <div className="panel flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-medium text-zinc-300">
-          <Wallet className="size-4 text-emerald-400" />
-          Carteira Financeira
-        </div>
+    <main className="mx-auto w-full max-w-5xl px-5 py-10 sm:py-14">
+      <header>
+        <p className="text-sm font-medium text-muted">Carteira Financeira</p>
+        <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
+          {greeting(now)}, {OWNER}
+        </h1>
+        <p className="mt-1 text-sm text-muted first-letter:uppercase">{formatLongDate(now)}</p>
       </header>
 
       <SummaryCards summary={summary} />
 
-      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+      <div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <TransactionForm today={today} />
-        <TransactionList transactions={transactions} filter={filter} />
+        <TransactionList transactions={transactions} filter={filter} today={today} />
       </div>
 
-      <footer className="pt-4 text-center text-xs text-zinc-500">
-        Feito por Gabriel Warpechowski · Desenvolvimento Web
+      <footer className="mt-16 border-t border-line pt-6 text-xs text-muted">
+        Gabriel Warpechowski · Desenvolvimento Web
       </footer>
     </main>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { AlertTriangle } from "lucide-react";
 
 export default function ErrorPage({
   error,
@@ -15,16 +14,15 @@ export default function ErrorPage({
   }, [error]);
 
   return (
-    <main className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center gap-4 px-4 py-16 text-center">
-      <AlertTriangle className="size-10 text-amber-500" />
-      <h1 className="text-xl font-semibold text-white">Não foi possível carregar suas finanças</h1>
-      <p className="text-zinc-400">
+    <main className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center gap-3 px-5 py-16 text-center">
+      <h1 className="text-xl font-semibold">Não foi possível carregar suas finanças</h1>
+      <p className="text-sm text-muted">
         Verifique se o banco de dados está rodando e se a variável <code>DATABASE_URL</code> está
         configurada.
       </p>
       <button
         onClick={() => retry()}
-        className="rounded-xl bg-emerald-500 px-4 py-2 font-semibold text-emerald-950 hover:bg-emerald-400"
+        className="mt-2 h-10 rounded-md bg-ink px-4 font-medium text-paper hover:opacity-85"
       >
         Tentar novamente
       </button>

@@ -4,16 +4,29 @@ export function formatCurrency(value: number) {
   return currency.format(value);
 }
 
-const dateFormat = new Intl.DateTimeFormat("pt-BR", {
-  day: "2-digit",
-  month: "short",
+const dayMonth = new Intl.DateTimeFormat("pt-BR", { day: "numeric", month: "long", timeZone: "UTC" });
+const dayMonthYear = new Intl.DateTimeFormat("pt-BR", {
+  day: "numeric",
+  month: "long",
   year: "numeric",
   timeZone: "UTC",
 });
 
-// Recebe "YYYY-MM-DD"; interpreta em UTC para não "voltar um dia" por fuso horário.
-export function formatDate(isoDate: string) {
-  return dateFormat.format(new Date(`${isoDate}T00:00:00Z`));
+// Datas "YYYY-MM-DD" são lidas em UTC para não "voltar um dia" por fuso horário.
+function parseIsoDate(isoDate: string) {
+  return new Date(`${isoDate}T00:00:00Z`);
+}
+
+// Título de cada dia no histórico: "Hoje", "Ontem", "27 de setembro" ou "3 de maio de 2025".
+export function formatDayHeading(isoDate: string, today: string) {
+  const yesterday = parseIsoDate(today);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+
+  if (isoDate === today) return "Hoje";
+  if (isoDate === yesterday.toISOString().slice(0, 10)) return "Ontem";
+
+  const sameYear = isoDate.slice(0, 4) === today.slice(0, 4);
+  return (sameYear ? dayMonth : dayMonthYear).format(parseIsoDate(isoDate));
 }
 
 // O servidor (Vercel) roda em UTC; o horário exibido é sempre o de Brasília.

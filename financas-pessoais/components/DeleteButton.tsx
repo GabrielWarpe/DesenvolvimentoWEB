@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { Trash2 } from "lucide-react";
+import { X } from "lucide-react";
 import { deleteTransaction } from "@/app/actions";
 
 export function DeleteButton({ id, description }: { id: string; description: string }) {
@@ -20,9 +20,9 @@ function Button({ description }: { description: string }) {
       disabled={pending}
       aria-label={`Excluir ${description}`}
       title="Excluir"
-      className="rounded-lg p-2 text-zinc-500 transition hover:bg-rose-500/10 hover:text-rose-400 disabled:animate-pulse"
+      className="-mr-1 rounded p-1 text-muted/40 transition group-hover:text-muted hover:text-expense! disabled:opacity-40"
     >
-      <Trash2 className="size-4" />
+      <X className="size-4" />
     </button>
   );
 }
